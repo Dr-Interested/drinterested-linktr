@@ -2,13 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+:root {
+  color-scheme: light;
+}
+:root.dark {
+  color-scheme: dark;
+}
+
+::selection {
+  background-color: #4ecdc4;
+  color: #ffffff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 

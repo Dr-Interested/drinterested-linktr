@@ -47,8 +47,9 @@ export function organizationSchema() {
 }
 
 /**
- * ProfilePage + ItemList describing this link-in-bio hub. `mainEntityOfPage` /
- * `significantLink` point at the canonical /links URL on the main site.
+ * ProfilePage describing this link-in-bio hub. It is self-canonical
+ * (`mainEntityOfPage` = this URL); `relatedLink` associates the equivalent /links
+ * page on the main site.
  */
 export function linksPageSchema() {
   return {

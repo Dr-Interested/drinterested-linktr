@@ -1,33 +1,41 @@
 "use client"
+import { useEffect, useState } from "react"
 import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 
 import { Switch } from "@/components/ui/switch"
 
 export function ThemeToggle() {
-  const { theme, setTheme } = useTheme()
+  const { resolvedTheme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => setMounted(true), [])
+
+  const isDark = mounted && resolvedTheme === "dark"
 
   const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light")
+    setTheme(isDark ? "light" : "dark")
   }
 
   return (
-    <div className="flex items-center space-x-2 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)]">
+    <div className="flex items-center space-x-2 rounded-full bg-white/70 px-2.5 py-1.5 shadow-sm backdrop-blur dark:bg-white/10">
       <Sun
-        className={`h-[1.2rem] w-[1.2rem] transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
-          theme === "dark" ? "text-[#A1A1AA] scale-75 rotate-12" : "text-foreground scale-100 rotate-0"
+        className={`h-[1.1rem] w-[1.1rem] transition-all ${
+          isDark ? "scale-75 text-[#A1A1AA]" : "scale-100 text-[#405862]"
         }`}
+        aria-hidden="true"
       />
       <Switch
-        checked={theme === "dark"}
+        checked={isDark}
         onCheckedChange={toggleTheme}
-        aria-label="Toggle theme"
-        className="transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:scale-110"
+        aria-label="Toggle dark mode"
+        className="hover:scale-110"
       />
       <Moon
-        className={`h-[1.2rem] w-[1.2rem] transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
-          theme === "light" ? "text-[#A1A1AA] scale-75 rotate-12" : "text-foreground scale-100 rotate-0"
+        className={`h-[1.1rem] w-[1.1rem] transition-all ${
+          isDark ? "scale-100 text-[#e8eef0]" : "scale-75 text-[#A1A1AA]"
         }`}
+        aria-hidden="true"
       />
     </div>
   )

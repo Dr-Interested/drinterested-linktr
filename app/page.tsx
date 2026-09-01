@@ -1,13 +1,14 @@
-import { MenuBar } from "@/components/menu-bar"
-import { ThemeToggle } from "@/components/theme-toggle"
+import LinksClient from "@/components/links-client"
+import StructuredData from "@/components/structured-data"
+import { breadcrumbSchema, linkItemListSchema, linksPageSchema } from "@/lib/structured-data"
 
 export default function Page() {
   return (
-    <div className="min-h-screen bg-background flex flex-col items-center justify-center p-4">
-      <div className="mb-[120px]">
-        <ThemeToggle />
-      </div>
-      <MenuBar />
-    </div>
+    <>
+      <StructuredData id="links-page-schema" data={linksPageSchema()} />
+      <StructuredData id="links-itemlist-schema" data={linkItemListSchema()} />
+      <StructuredData id="links-breadcrumb-schema" data={breadcrumbSchema()} />
+      <LinksClient />
+    </>
   )
 }

@@ -8,6 +8,10 @@ const config: Config = {
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    // lib/site.ts holds the per-link button color classes (bg-[#…], gradient stops).
+    // Without this glob Tailwind never generates them and every link button renders
+    // background-less with invisible white text.
+    "./lib/**/*.{js,ts,jsx,tsx,mdx}",
     "*.{js,ts,jsx,tsx,mdx}"
   ],
   theme: {

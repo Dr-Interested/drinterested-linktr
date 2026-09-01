@@ -22,7 +22,7 @@ The link list lives in two places — keep them in sync. When the main site's
 | Link list, tagline, policy links, `sameAs` profiles | [`lib/site.ts`](lib/site.ts) |
 | Page UI (branded card, dark mode, a11y, reduced-motion) | [`components/links-client.tsx`](components/links-client.tsx) |
 | Global `<head>` metadata, Open Graph, Twitter, canonical, icons | [`app/layout.tsx`](app/layout.tsx) |
-| JSON-LD (`Organization`, `ProfilePage`, `ItemList`, `BreadcrumbList`) | [`lib/structured-data.ts`](lib/structured-data.ts) |
+| JSON-LD (`Organization`, `CollectionPage`, `ItemList`, `BreadcrumbList`) | [`lib/structured-data.ts`](lib/structured-data.ts) |
 | `robots.txt` | [`app/robots.ts`](app/robots.ts) |
 | `sitemap.xml` | [`app/sitemap.ts`](app/sitemap.ts) |
 | PWA manifest (`/manifest.webmanifest`) | [`app/manifest.ts`](app/manifest.ts) |

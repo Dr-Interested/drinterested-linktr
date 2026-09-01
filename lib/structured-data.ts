@@ -47,14 +47,19 @@ export function organizationSchema() {
 }
 
 /**
- * ProfilePage describing this link-in-bio hub. It is self-canonical
- * (`mainEntityOfPage` = this URL); `relatedLink` associates the equivalent /links
- * page on the main site.
+ * CollectionPage describing this link-in-bio hub. The page is self-canonical (its own
+ * `url`, matched by the HTML <link rel="canonical">); `relatedLink` associates the
+ * equivalent /links page on the main site, and `about` points at the Organization.
+ *
+ * We use CollectionPage, not ProfilePage: this is an organisation link list, not a
+ * social profile. ProfilePage makes Google validate against its profile-page rich
+ * result and flag every field outside mainEntity/dateModified as "unrecognized"
+ * (e.g. the earlier `mainEntityOfPage` warning in Search Console).
  */
 export function linksPageSchema() {
   return {
     "@context": "https://schema.org",
-    "@type": "ProfilePage",
+    "@type": "CollectionPage",
     "@id": `${SITE_URL}/#webpage`,
     url: SITE_URL,
     name: `Links | ${SITE_NAME}`,
@@ -65,8 +70,7 @@ export function linksPageSchema() {
       name: SITE_NAME,
       url: MAIN_SITE_URL,
     },
-    mainEntity: organizationNode(),
-    mainEntityOfPage: SITE_URL,
+    about: organizationNode(),
     relatedLink: [CANONICAL_LINKS_URL],
     significantLink: LINKS.map((l) => l.url),
     primaryImageOfPage: {

@@ -163,7 +163,7 @@ export const POLICY_LINKS: { label: string; url: string }[] = [
   { label: "Media Consent", url: "https://www.drinterested.org/media-consent" },
 ]
 
-/** Every official Dr. Interested profile — used for the ProfilePage/Organization `sameAs`. */
+/** Every official Dr. Interested profile — used for the Organization `sameAs`. */
 export const SAME_AS: string[] = [
   "https://www.instagram.com/dr.interested/",
   "https://www.linkedin.com/company/dr-interested/",

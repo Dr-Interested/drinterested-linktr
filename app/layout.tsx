@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   publisher: SITE_NAME,
   category: "education",
   alternates: {
-    // Self-canonical: link.drinterested.org is the primary link-in-bio URL. It is tied to the
+    // Self-canonical:   link.drinterested.org is the primary link-in-bio URL. It is tied to the
     // main site as one entity via the shared Organization schema, not via rel=canonical.
     canonical: SITE_URL,
   },
